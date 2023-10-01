@@ -1,47 +1,33 @@
 # DDChatbot
 
-## Setup
+First create a `.env` file based on `.env.template`
+with your own codes for openAI API.
 
-Before using this repo install all the requirements
+Rebuild the docker image:
 
-```shell
-pip install -r requirements.txt
+```
+docker build -t addedmegenai:latest . 
 ```
 
+Run the docker: 
 
-Then install the package
-
-```shell
-pip install .
+```
+docker run -p 5001:5000 addedmegenai:latest 
 ```
 
-For **development** install in editable mode
+Access the endpoint with a GET here:
 
-
-```shell
-pip install -e .
+```
+http://localhost:5001/
 ```
 
-## Starting flask server
+You should get `here API genAI!!`
 
-To use the created flask api first create a `.env` file with the following variables
+To test the end point use the notebook `notebooks/usage_example_curl.ipynb`
 
-```bash
-AZURE_STORAGE_ACCOUNT=
-AZURE_STORAGE_CONTAINER= 
-AZURE_SEARCH_SERVICE= 
-AZURE_SEARCH_INDEX= 
-AZURE_OPENAI_SERVICE= 
-AZURE_OPENAI_GPT_DEPLOYMENT=text-davinci-003
-AZURE_OPENAI_CHATGPT_DEPLOYMENT=gpt-35-turbo
-OPENAI_API_KEY= 
-DB_CONNECTION_STRING=mongodb://localhost:27017/<db-name>
-DB_NAME=
-```
+Run it to see the post result - It should take about 50 seconds to get all needed data.
 
-then run 
+To see the class working use the notebook `notebooks/usage_example.ipynb`
 
-```` bash
-python app.py
-```
 
+Any question email me (nuno@daredata.engineering)
