@@ -42,18 +42,11 @@ def chat():
     approach = "embrrr"
     try:
         print("conversation_id", request.json)
-        r = chatbot.run(
-            request.json.get("history"),
-            # request.json.get("overrides"),
-            request.json.get("max_words", None),
-            request.json.get("conversation_id", None),
-            request.json.get("interaction_type", None),
-            request.json.get("is_avatar", None),
-            request.json.get("is_avatar_sound", None),
-            request.json.get("layout_width", None),
-            request.json.get("layout", None),
+        r = chatbot.run({
+            "long_term_objective": request.json.get("long_term_objective"),
+            "date_of_achievement": request.json.get("date_of_achievement"),
+            "area": request.json.get("area")}
         )
-        print("docs: ", [doc.metadata["title"] for doc in chatbot.docs])
         response = jsonify(r)
     except Exception as e:
         logging.exception("Exception in /chat")
